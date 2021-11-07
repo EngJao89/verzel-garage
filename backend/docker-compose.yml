@@ -1,0 +1,33 @@
+version: '3.8'
+
+services: 
+  node_backend:
+    container_name: node_verzel
+    image: node_verzel:0.0.4
+    build: 
+      context: .
+    command: npm run start
+    ports:
+      - "3001:3001"
+    environment: 
+      - EXTERNAL_PORT=3001
+      - PGDATABASE=verzel_db
+      - PGUSER=jricardo
+      - PGPASSWORD=12345
+      - PGHOST=node_db
+    depends_on: 
+      - node_db
+  node_db: 
+    container_name: node_db
+    image: "postgres:12"
+    ports:
+      - "5432:5432"
+    environment: 
+      - POSTGRES_USER=jricardo
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=verzel_db
+    volumes:
+      - nps_data:/var/lib/postgresql/data
+
+volumes:
+  nps_data: {}
