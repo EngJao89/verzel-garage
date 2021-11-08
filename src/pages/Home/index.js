@@ -16,7 +16,7 @@ import Header from '../../components/Header';
 import SliderItem from '../../components/SliderItem';
 
 //import api, { key } from '../../services/api';
-import { getListCars, randomBanner } from '../../utils/movies';
+import { getListCars, randomBanner } from '../../utils/cars';
 
 import { useNavigation } from '@react-navigation/native';
 
